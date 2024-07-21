@@ -4,6 +4,7 @@
 static volatile unsigned long stateCount = 0;
 
 static const char lvTune[] PROGMEM = "!L8 V8 A<A A<A A<A A<A R1R1";
+static const char Ruski[] PROGMEM = "!L2 V15 A R1R1";
 
 enum LVMonitorState { NORMAL, NORMAL_TO_LV, LOW_VOLTAGE, LV_TO_NORMAL };
 static LVMonitorState state = NORMAL;
@@ -62,7 +63,7 @@ bool LowVoltageHelper::isLowVoltage() {
 void LowVoltageHelper::lowVoltageAlertCheck() {
   if (isLowVoltage()) {
     if (!bzr.playCheck()) {
-      bzr.playFromProgramSpace(lvTune);
+      bzr.playFromProgramSpace(Ruski);
     }
   }
   else {
